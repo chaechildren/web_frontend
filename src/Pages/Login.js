@@ -29,7 +29,7 @@ const Login = () => {
     setLoading(true);
     setOnceCliekd(true);
     try {
-      const result = await axios.post(baseUrl + "/phone/login", {
+      const result = await axios.post(baseUrl + "/login", {
         ID: email,
         PW: password,
       });
