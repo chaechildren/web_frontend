@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Grid, Message, Form, Button, Icon, Header } from "semantic-ui-react";
 import axios from "axios";
-
+import { baseUrl } from "../Constants/contants";
 const ArduinoPost = () => {
   const [onceClicked, setOnceClicked] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -19,7 +19,7 @@ const ArduinoPost = () => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-    const result = await axios.post("http://localhost:4000/arduino/data", {
+    const result = await axios.post(baseUrl + "/arduino/data", {
       humidity,
     });
     console.log("send humidity", result);

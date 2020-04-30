@@ -5,6 +5,7 @@ import { Form, Grid, Button, Checkbox, Segment } from "semantic-ui-react";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import ArduinoPost from "./Pages/ArduinoPost";
+import Dummy from "./Pages/Dummy";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
               <ArduinoPost />
             </Grid.Column>
             <Grid.Column>
-              <Register />
+              <Dummy />
             </Grid.Column>
           </Grid.Row>
         </Grid>

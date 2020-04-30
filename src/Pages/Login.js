@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Message, Form, Button, Icon, Header } from "semantic-ui-react";
 import axios from "axios";
+import { baseUrl } from "../Constants/contants";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -28,8 +29,7 @@ const Login = () => {
     setLoading(true);
     setOnceCliekd(true);
     try {
-      throw Error(404);
-      const result = await axios.post("http://localhost:4000/phone/login", {
+      const result = await axios.post(baseUrl + "/phone/login", {
         ID: email,
         PW: password,
       });

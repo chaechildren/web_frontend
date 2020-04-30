@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Header, Grid, Form, Button, Icon } from "semantic-ui-react";
 import axios from "axios";
+import { baseUrl } from "../Constants/contants";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [humidity, setHumidity] = useState("");
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -16,20 +16,10 @@ const Register = () => {
   const onChangeConfirmPassword = (e) => {
     setConfirmPassword(e.target.value);
   };
-  const onChangeHumidity = (e) => {
-    setHumidity(e.target.value);
-  };
-  const onSumbitHumidity = async (e) => {
-    e.preventDefault();
-    const result = await axios.post("http://localhost:4000/arduino/data", {
-      humidity,
-    });
-    console.log("send humidity", result);
-    setHumidity("");
-  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    const result = await axios.post("http://localhost:4000/phone/login", {
+    const result = await axios.post(baseUrl + "/phone/login", {
       ID: email,
       PW: password,
     });
