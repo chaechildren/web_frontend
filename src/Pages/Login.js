@@ -9,6 +9,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [onceClicked, setOnceCliekd] = useState(false);
   const [loginError, setLoginError] = useState(false);
+  const [resultData, setResultData] = useState(null);
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -37,6 +38,7 @@ const Login = () => {
       setEmail("");
       setPassword("");
       setLoading(false);
+      setResultData(result.data);
     } catch (e) {
       setEmail("");
       setPassword("");
@@ -44,8 +46,8 @@ const Login = () => {
       setLoginError(true);
     }
   };
+
   let message = "";
-  console.log(email, password);
   if (onceClicked && loading) {
     message = (
       <Message icon>
@@ -57,15 +59,23 @@ const Login = () => {
       </Message>
     );
   } else if (onceClicked && !loading) {
-    message = (
-      <Message icon positive>
-        <Icon name="circle outline" />
-        <Message.Content>
-          <Message.Header>Success</Message.Header>
-          <p>You Are Logged In</p>
-        </Message.Content>
-      </Message>
-    );
+    if (resultData) {
+      message = (
+        <Message
+          icon
+          positive={resultData.resultCode === 200}
+          negative={resultData.resultCode === 300}
+        >
+          <Icon name="circle outline" />
+          <Message.Content>
+            <Message.Header>
+              {resultData.resultCode === 200 ? "Success" : "Fail"}
+            </Message.Header>
+            <p>{resultData.msg}</p>
+          </Message.Content>
+        </Message>
+      );
+    }
   }
   return (
     <>
