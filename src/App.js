@@ -1,25 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { Form, Grid, Button, Checkbox, Segment } from "semantic-ui-react";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import ArduinoPost from "./Pages/ArduinoPost";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <div className="app">
+        <Grid
+          celled
+          verticalAlign="middle"
+          container
+          centered
+          columns={2}
+          divided
+          textAlign="center"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Grid.Row>
+            <Grid.Column>
+              <Login />
+            </Grid.Column>
+            <Grid.Column>
+              <Register />
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row>
+            <Grid.Column>
+              <ArduinoPost />
+            </Grid.Column>
+            <Grid.Column>
+              <Register />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </div>
+    </>
   );
 }
 
