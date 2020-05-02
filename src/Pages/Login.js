@@ -64,7 +64,7 @@ const Login = () => {
         <Message
           icon
           positive={resultData.resultCode === 200}
-          negative={resultData.resultCode === 300}
+          negative={resultData.resultCode !== 200}
         >
           <Icon name="circle outline" />
           <Message.Content>
