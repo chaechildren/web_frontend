@@ -7,9 +7,10 @@ import {
   Checkbox,
   Label,
 } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const SidePanel = (props) => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const onClick = (e) => {
     e.preventDefault();
     setVisible(!visible);
@@ -35,12 +36,25 @@ const SidePanel = (props) => {
           Arduino Heat
         </Menu.Item>
         <Menu.Item>
-          <Button
-            as="a"
-            color="teal"
-            icon="signup"
-            content="유저 로그인 / 가입"
-          />
+          <Button as="a" color="teal" icon="sign in">
+            <Link to="/login" style={{ color: "white" }}>
+              로그인
+            </Link>
+          </Button>
+        </Menu.Item>
+        <Menu.Item>
+          <Button as="a" color="teal" icon="signup">
+            <Link to="register" style={{ color: "white" }}>
+              회원가입
+            </Link>
+          </Button>
+        </Menu.Item>
+        <Menu.Item>
+          <Button as="a" color="teal" icon="signup">
+            <Link to="data" style={{ color: "white" }}>
+              데이터 전송
+            </Link>
+          </Button>
         </Menu.Item>
       </Sidebar>
     </>
