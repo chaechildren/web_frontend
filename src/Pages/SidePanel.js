@@ -56,6 +56,13 @@ const SidePanel = (props) => {
             </Link>
           </Button>
         </Menu.Item>
+        <Menu.Item>
+          <Button as="a" color="teal" icon="signup">
+            <Link to="arduino-register" style={{ color: "white" }}>
+              아두이노 등록
+            </Link>
+          </Button>
+        </Menu.Item>
       </Sidebar>
     </>
   );

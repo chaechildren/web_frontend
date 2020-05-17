@@ -13,6 +13,7 @@ import {
 import RegisterRoute from "./routes/RegisterRoute";
 import PostArdData from "./routes/PostArdData";
 import UserList from "./routes/UserList";
+import ArduinoRegisterRoute from "./routes/ArduinoRegister";
 
 const Root = (props) => {
   return (
@@ -22,6 +23,7 @@ const Root = (props) => {
         <Route path="/register" component={RegisterRoute} />
         <Route path="/data" component={PostArdData} />
         <Route path="/users" component={UserList} />
+        <Route path="/arduino-register" component={ArduinoRegisterRoute} />
         {/* <Route path='/' component={Login} />
         <Route path='/' component={Register} /> */}
       </Switch>
