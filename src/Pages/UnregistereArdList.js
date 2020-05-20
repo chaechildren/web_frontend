@@ -6,7 +6,8 @@ import axios from "axios";
 const UnregistereArdList = (props) => {
   const [ardList, setArdList] = useState([]);
   const [userList, setUserList] = useState([]);
-
+  const [currentArduino, setCurrentArduino] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       const ardList = await axios.get(baseUrl + "/arduino/unregistered");
@@ -21,6 +22,18 @@ const UnregistereArdList = (props) => {
     };
     fetchData();
   }, []);
+  const connect = async (e) => {
+    console.log("connect btn clicked");
+    if (!currentArduino && !currentUser) {
+      console.log("select 해야지");
+      return;
+    }
+    const result = await axios.post(baseUrl + "/phone/connect", {
+      arduino_id: currentArduino,
+      user_id: currentUser,
+    });
+    console.log("result", result);
+  };
   return (
     <>
       <Grid columns="equal">
@@ -36,7 +49,10 @@ const UnregistereArdList = (props) => {
               {ardList &&
                 ardList.length > 0 &&
                 ardList.map((arduino) => (
-                  <Card color="green">
+                  <Card
+                    color={currentArduino === arduino.ID ? "red" : "green"}
+                    onClick={() => setCurrentArduino(arduino.ID)}
+                  >
                     <Card.Content>
                       <Card.Header>Arduino Id : {arduino.ID}</Card.Header>
                     </Card.Content>
@@ -54,7 +70,10 @@ const UnregistereArdList = (props) => {
               {userList &&
                 userList.length > 0 &&
                 userList.map((user) => (
-                  <Card color="orange">
+                  <Card
+                    color={currentUser === user.ID ? "blue" : "orange"}
+                    onClick={() => setCurrentUser(user.ID)}
+                  >
                     <Card.Content>
                       <Card.Header>User Id : {user.ID}</Card.Header>
                     </Card.Content>
@@ -70,7 +89,7 @@ const UnregistereArdList = (props) => {
           />
           <Grid.Column width={4}>
             <Button
-              disabled
+              onClick={connect}
               content=" 개발 해야함(Connect)"
               icon="add"
               color="violet"
