@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Segment, Grid } from "semantic-ui-react";
+import { Card, Segment, Grid, Button, Header } from "semantic-ui-react";
 import { baseUrl } from "../Constants/contants";
 import axios from "axios";
 
@@ -25,7 +25,7 @@ const UnregistereArdList = (props) => {
     <>
       <Grid columns="equal">
         <Grid.Row>
-          <Grid.Column>
+          <Grid.Column width={7}>
             <Card.Group>
               <Card color="green">
                 <Card.Content>
@@ -44,7 +44,7 @@ const UnregistereArdList = (props) => {
                 ))}
             </Card.Group>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column width={7}>
             <Card.Group vi>
               <Card color="orange">
                 <Card.Content>
@@ -61,6 +61,21 @@ const UnregistereArdList = (props) => {
                   </Card>
                 ))}
             </Card.Group>
+          </Grid.Column>
+          <Header
+            as="a2"
+            content="아두이노 ==> 유저 계정 연결 카드를 클릭하세요"
+            inverted
+            color="red"
+          />
+          <Grid.Column width={4}>
+            <Button
+              disabled
+              content=" 개발 해야함(Connect)"
+              icon="add"
+              color="violet"
+              size="massive"
+            />
           </Grid.Column>
         </Grid.Row>
       </Grid>
